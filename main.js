@@ -92,16 +92,10 @@
   var RIGHT_KEY = 39;
   var SHOOT_KEY = 32; //88 = key "X" / 32 = space_bar
   var TEXT_BLINK_FREQ = 500;
-  // var PLAYER_CLIP_RECT = { x: 0, y: 204, w: 62, h: 32 };
-  // var ALIEN_BOTTOM_ROW = [ { x: 0, y: 0, w: 51, h: 34 }, { x: 0, y: 102, w: 51, h: 34 }];
-  // var ALIEN_MIDDLE_ROW = [ { x: 0, y: 137, w: 50, h: 33 }, { x: 0, y: 170, w: 50, h: 34 }];
-  // var ALIEN_TOP_ROW = [ { x: 0, y: 68, w: 50, h: 32 }, { x: 0, y: 34, w: 50, h: 32 }];
-
   var PLAYER_CLIP_RECT = { x: 0, y: 126, w: 31, h: 80 };
-  var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 82, w: 31, h: 41 }];
-  var ALIEN_MIDDLE_ROW = [ { x: 0, y: 42, w: 32, h: 36 }, { x: 0, y: 42, w: 32, h: 36 }];
-  var ALIEN_MIDDLE_ROW = [ { x: 0, y: 42, w: 32, h: 36 }, { x: 0, y: 42, w: 32, h: 36 }];
-  var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 0, w: 38, h: 38 }];
+  var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 291, w: 31, h: 41 }];
+  var ALIEN_MIDDLE_ROW = [ { x: 0, y: 42, w: 32, h: 36 }, { x: 0, y: 250, w: 32, h: 36 }];
+  var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 210, w: 38, h: 38 }];
 
   var ALIEN_X_MARGIN = 40;
   var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN;

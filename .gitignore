@@ -1,3 +1,5 @@
 /.DS_Store
 /sprite copia.png
 /sprite.psd
+/bkp-sprites/*
+.gitignore
