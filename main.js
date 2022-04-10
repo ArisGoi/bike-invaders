@@ -96,6 +96,7 @@
   var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 291, w: 31, h: 41 }];
   var ALIEN_MIDDLE_ROW = [ { x: 0, y: 42, w: 32, h: 36 }, { x: 0, y: 250, w: 32, h: 36 }];
   var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 210, w: 38, h: 38 }];
+  const livesIcon = {x:0, y:334, w:38, h:34}
 
   var ALIEN_X_MARGIN = 40;
   var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN; //def 11
@@ -676,26 +677,16 @@
     //__start__ draw lives
     var nOfLifes = 0;
     switch (player.lives) {
-      case 3:
-        nOfLifes = 3;
-        break;
-      case 2:
-        nOfLifes = 2;
-        break;
-      case 1:
-        nOfLifes = 1;
-        break;
-      case 0:
-        nOfLifes = 0;
-        break;
-      default:
+      case 3: nOfLifes = 3; break;
+      case 2: nOfLifes = 2; break;
+      case 1: nOfLifes = 1; break;
+      case 0: nOfLifes = 0; break;
+      default: nOfLifes = 1;
         fillText(' x ' + player.lives, 42, CANVAS_HEIGHT - 7.5, 'white', 20);
-        nOfLifes = 1;
     }
     for(let cnt=0; cnt < nOfLifes; cnt++){
-      ctx.drawImage(spriteSheetImg, player.clipRect.x, player.clipRect.y, player.clipRect.w, 
-        player.clipRect.h, 25 + cnt * 20, CANVAS_HEIGHT - 23, player.clipRect.w * 0.5,
-        player.clipRect.h * 0.5);
+      ctx.drawImage(spriteSheetImg, livesIcon.x, livesIcon.y, livesIcon.w, livesIcon.h, 
+        25 + cnt * 20, CANVAS_HEIGHT - 23, livesIcon.w * 0.5, livesIcon.h * 0.5);
     }
     //__end__ draw lives
   }
