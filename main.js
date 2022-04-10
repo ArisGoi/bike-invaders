@@ -85,12 +85,12 @@
   //
   // ###################################################################
   var IS_CHROME = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  var CANVAS_WIDTH = 640;
-  var CANVAS_HEIGHT = 640;
+  var CANVAS_WIDTH = 640; //def 640
+  var CANVAS_HEIGHT = 640; //def 640
   var SPRITE_SHEET_SRC = './sprite.png';
   var LEFT_KEY = 37;
   var RIGHT_KEY = 39;
-  var SHOOT_KEY = 32; //88 = key "X" / 32 = space_bar
+  var SHOOT_KEY = 88; //88 = key "X" / 32 = space_bar
   var TEXT_BLINK_FREQ = 500;
   var PLAYER_CLIP_RECT = { x: 0, y: 126, w: 31, h: 80 };
   var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 291, w: 31, h: 41 }];
@@ -98,7 +98,7 @@
   var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 210, w: 38, h: 38 }];
 
   var ALIEN_X_MARGIN = 40;
-  var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN;
+  var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN; //def 11
   
   
   
@@ -667,15 +667,37 @@
   }
   
   function drawBottomHud() {
-    ctx.fillStyle = '#02ff12';
+    ctx.fillStyle = '#eeeeee';
     ctx.fillRect(0, CANVAS_HEIGHT - 30, CANVAS_WIDTH, 2);
-    fillText(player.lives + ' x ', 10, CANVAS_HEIGHT - 7.5, 'white', 20);
-    ctx.drawImage(spriteSheetImg, player.clipRect.x, player.clipRect.y, player.clipRect.w, 
-                   player.clipRect.h, 45, CANVAS_HEIGHT - 23, player.clipRect.w * 0.5,
-                   player.clipRect.h * 0.5);
-    fillText('CREDIT: ', CANVAS_WIDTH - 115, CANVAS_HEIGHT - 7.5);
-    fillCenteredText('SCORE: ' + player.score, CANVAS_WIDTH/2, 20);
-    fillBlinkingText('00', CANVAS_WIDTH - 25, CANVAS_HEIGHT - 7.5, TEXT_BLINK_FREQ);
+    fillCenteredText('SCORE: ' + player.score, 80, 40, '#fff', 20);
+    fillText('CREDIT: ', CANVAS_WIDTH - 135, 40, '#fff', 20);
+    fillBlinkingText('00', CANVAS_WIDTH - 45, 40, TEXT_BLINK_FREQ, '#fff', 20);
+
+    //__start__ draw lives
+    var nOfLifes = 0;
+    switch (player.lives) {
+      case 3:
+        nOfLifes = 3;
+        break;
+      case 2:
+        nOfLifes = 2;
+        break;
+      case 1:
+        nOfLifes = 1;
+        break;
+      case 0:
+        nOfLifes = 0;
+        break;
+      default:
+        fillText(' x ' + player.lives, 42, CANVAS_HEIGHT - 7.5, 'white', 20);
+        nOfLifes = 1;
+    }
+    for(let cnt=0; cnt < nOfLifes; cnt++){
+      ctx.drawImage(spriteSheetImg, player.clipRect.x, player.clipRect.y, player.clipRect.w, 
+        player.clipRect.h, 25 + cnt * 20, CANVAS_HEIGHT - 23, player.clipRect.w * 0.5,
+        player.clipRect.h * 0.5);
+    }
+    //__end__ draw lives
   }
   
   function drawAliens(resized) {
