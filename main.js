@@ -689,6 +689,11 @@
         25 + cnt * 20, CANVAS_HEIGHT - 23, livesIcon.w * 0.5, livesIcon.h * 0.5);
     }
     //__end__ draw lives
+
+    const myLogo = new Image();
+    myLogo.src = './invaders.png';
+    myLogoPos = {x:0, y:0, w:231, h:61};
+    ctx.drawImage(myLogo, myLogoPos.x, myLogoPos.y, myLogoPos.w, myLogoPos.h, CANVAS_WIDTH/2 - 55, 20, myLogoPos.w * 0.5, myLogoPos.h * 0.5);
   }
   
   function drawAliens(resized) {
