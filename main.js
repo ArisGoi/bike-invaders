@@ -85,8 +85,8 @@
   //
   // ###################################################################
   var IS_CHROME = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  var CANVAS_WIDTH = 640; //def 640
-  var CANVAS_HEIGHT = 640; //def 640
+  var CANVAS_WIDTH = 740; //def 640
+  var CANVAS_HEIGHT = 540; //def 640
   var SPRITE_SHEET_SRC = './sprite.png';
   var LEFT_KEY = 37;
   var RIGHT_KEY = 39;
@@ -98,7 +98,7 @@
   var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 210, w: 38, h: 38 }];
   const livesIcon = {x:0, y:334, w:38, h:34}
 
-  var ALIEN_X_MARGIN = 40;
+  var ALIEN_X_MARGIN = 42;
   var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN; //def 11
   
   
@@ -178,7 +178,7 @@
   var particleManager = null;
   var updateAlienLogic = false;
   var alienDirection = -1;
-  var alienYDown = 0;
+  var alienYDown = 75;
   var alienCount = 0;
   var wave = 1;
   var hasGameStarted = false;
@@ -197,7 +197,7 @@
       this.bounds = new Rect(x, y, this.img.width, this.img.height);
       this.doLogic = true;
     },
-                             
+    
     update: function(dt) { },
     
     _updateBounds: function() {
@@ -342,7 +342,7 @@
     init: function(clipRects, x, y) {
       this._super(spriteSheetImg, clipRects[0], x, y);
       this.clipRects = clipRects;
-      this.scale.set(0.5, 0.5);
+      this.scale.set(0.6, 0.6);
       this.alive = true;
       this.onFirstState = true;
       this.stepDelay = 1; // try 2 secs to start with...
@@ -486,7 +486,7 @@
   
   function preDrawImages() {
     var canvas = drawIntoCanvas(2, 8, function(ctx) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       });
       bulletImg = new Image();
@@ -576,6 +576,7 @@
         if (alienCount < 1) {
           wave++;
           setupAlienFormation();
+          alienYDown = 75;
         }
         return;
       }
@@ -711,7 +712,7 @@
   }
   
   function drawStartScreen() {
-    fillCenteredText("Space Invaders", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
+    fillCenteredText("Bike Invaders", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
     fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 500, '#FFFFFF', 36);
   }
   
