@@ -712,8 +712,14 @@
   }
   
   function drawStartScreen() {
-    fillCenteredText("Bike Invaders", CANVAS_WIDTH/2, CANVAS_HEIGHT/2.75, '#FFFFFF', 36);
-    fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2, 500, '#FFFFFF', 36);
+    const myFullLogo = new Image();
+    myFullLogo.src = './fullLogo.png';
+    myFullLogoPos = {x:0, y:0, w:462, h:300};
+    ctx.drawImage(myFullLogo, myFullLogoPos.x, myFullLogoPos.y, myFullLogoPos.w, myFullLogoPos.h, CANVAS_WIDTH/2 - 116, 100, myFullLogoPos.w, myFullLogoPos.h);
+
+    // fillCenteredText("Press _space_ to fire! And arrows to move", CANVAS_WIDTH/2, CANVAS_HEIGHT/2, '#FFFFFF', 20);
+    fillBlinkingText("Press enter to play!", CANVAS_WIDTH/2, CANVAS_HEIGHT/2 + 100, 500, '#FFFFFF', 30);
+
   }
   
   function animate() {
