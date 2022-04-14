@@ -85,12 +85,12 @@
   //
   // ###################################################################
   var IS_CHROME = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-  var CANVAS_WIDTH = 740; //def 640
-  var CANVAS_HEIGHT = 540; //def 640
+  var CANVAS_WIDTH = 740; //def 640 //new 740
+  var CANVAS_HEIGHT = 540; //def 640 //new 540
   var SPRITE_SHEET_SRC = './sprite.png';
   var LEFT_KEY = 37;
   var RIGHT_KEY = 39;
-  var SHOOT_KEY = 88; //88 = key "X" / 32 = space_bar
+  var SHOOT_KEY = 32; //88 = key "X" / 32 = space_bar
   var TEXT_BLINK_FREQ = 500;
   var PLAYER_CLIP_RECT = { x: 0, y: 126, w: 31, h: 80 };
   var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 291, w: 31, h: 41 }];
