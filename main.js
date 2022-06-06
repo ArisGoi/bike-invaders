@@ -3,6 +3,7 @@
  * MIT Licensed.
  */
 // Inspired by base2 and Prototype
+// Reworked by Me
 (function(){
     var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
    
@@ -92,11 +93,13 @@
   var RIGHT_KEY = 39;
   var SHOOT_KEY = 32; //88 = key "X" / 32 = space_bar
   var TEXT_BLINK_FREQ = 500;
-  var PLAYER_CLIP_RECT = { x: 0, y: 126, w: 31, h: 80 };
-  var ALIEN_BOTTOM_ROW = [ { x: 0, y: 82, w: 31, h: 41 }, { x: 0, y: 291, w: 31, h: 41 }];
-  var ALIEN_MIDDLE_ROW = [ { x: 0, y: 42, w: 32, h: 36 }, { x: 0, y: 250, w: 32, h: 36 }];
-  var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 38, h: 38 }, { x: 0, y: 210, w: 38, h: 38 }];
-  const livesIcon = {x:0, y:334, w:38, h:34}
+  var PLAYER_CLIP_RECT = { x: 0, y: 162, w: 31, h: 80 };
+  var ALIEN_BOTTOM_DOWN_ROW = [ { x: 3, y: 121, w: 31, h: 41 }, { x: 42, y: 121, w: 30, h: 41 }];
+  var ALIEN_BOTTOM_ROW = [ { x: 0, y: 99, w: 38, h: 21 }, { x: 38, y: 99, w: 38, h: 21 }];
+  var ALIEN_MIDDLE_DOWN_ROW = [ { x: 2, y: 60, w: 33, h: 38 }, { x: 39, y: 60, w: 32, h: 38 }];
+  var ALIEN_MIDDLE_ROW = [ { x: 0, y: 37, w: 38, h: 23 }, { x: 38, y: 37, w: 38, h: 23 }];
+  var ALIEN_TOP_ROW = [ { x: 0, y: 0, w: 37, h: 37 }, { x: 38, y: 0, w: 38, h: 37 }];
+  const livesIcon = {x:0, y:243, w:38, h:33}
 
   var ALIEN_X_MARGIN = 42;
   var ALIEN_SQUAD_WIDTH = 11 * ALIEN_X_MARGIN; //def 11
@@ -485,8 +488,8 @@
   }
   
   function preDrawImages() {
-    var canvas = drawIntoCanvas(2, 8, function(ctx) {
-        ctx.fillStyle = '#ffffff';
+    var canvas = drawIntoCanvas(3, 12, function(ctx) {
+        ctx.fillStyle = '#E95A0C';
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       });
       bulletImg = new Image();
@@ -517,9 +520,9 @@
       var gridY = Math.floor(i / 11);
       var clipRects;
       switch (gridY) {
-        case 0: 
+        case 0: clipRects = ALIEN_BOTTOM_DOWN_ROW; break;
         case 1: clipRects = ALIEN_BOTTOM_ROW; break;
-        case 2: 
+        case 2: clipRects = ALIEN_MIDDLE_DOWN_ROW; break;
         case 3: clipRects = ALIEN_MIDDLE_ROW; break;
         case 4: clipRects = ALIEN_TOP_ROW; break;
       }
