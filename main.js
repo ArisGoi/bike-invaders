@@ -3,6 +3,7 @@
  * MIT Licensed.
  */
 // Inspired by base2 and Prototype
+// Reworked by Me
 (function(){
     var initializing = false, fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
    
@@ -487,8 +488,8 @@
   }
   
   function preDrawImages() {
-    var canvas = drawIntoCanvas(2, 8, function(ctx) {
-        ctx.fillStyle = '#ffffff';
+    var canvas = drawIntoCanvas(3, 12, function(ctx) {
+        ctx.fillStyle = '#E95A0C';
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       });
       bulletImg = new Image();
